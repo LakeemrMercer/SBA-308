@@ -1,0 +1,179 @@
+// The Provided course information.
+const courseinfo = {
+    id: 451,
+    name:"Introduction to JavaScript",
+};
+
+// The Provided Assignement  group.
+const AssignementGroup = {
+    id:12345,
+    name: "Fundamentals of JavaScript",
+    group_weight: 25,
+    assignemnts: [
+        {
+            Id: 1,
+            name: "Declare a Variable",
+            due_at: "2023-01-25",
+            Points_Possible: 50,
+        },
+        {
+            id: 2,
+            name: "Write a Function",
+            due_at: "2023-02-27",
+            points_possible: 150,
+        },
+        {
+            id:3, 
+            name: "Code of the World",
+            due_at: "3126-11-15",
+            points_possible: 500,
+        },
+    ],
+};
+
+// The Provided learner Submission data.
+const LearnerSubmissions = [
+    {
+        learner_id: 125,
+        assignment_id: 1,
+        Submission: {
+            submitted_at : "2023-01-25"
+            score: 47,
+        },
+    },
+    {
+        learner_id: 125,
+        assignment_id: 2,
+        submission: {
+            submitted_at: "2023-02-12",
+            score: 150,
+        },
+    },
+    {
+        learner_id: 132,
+        assignment_id: 1,
+        submission: {
+            submitted_at: "2023-01-25",
+            score: 400,
+        },
+    },
+    {
+        learner_id: 132,
+        assignment_id: 1,
+        submission: {
+            submitted_at: "2023-01-24"
+            score: 39,
+        },
+    },
+    {
+        learner_id: 132,
+        submission: {
+            submitted_at: "2023-03-07",
+            score: 140,
+        },
+    },
+];
+
+// Function to Setup Each learner object
+const setupresult = (id) => {
+    const learnerobj = {};
+    learnerobj.id = id;
+    learnerobj.totalscore = 0,
+    learnerobj.maxscore = 0;
+    return learnerobj;
+};
+
+function getlearnerdata(course, ag, Submissions) {
+    const result = [];
+    let islate = false;
+}
+
+// Throw an error for course Id mismatch
+if (Course.id !== ag.course_id) {
+    throw  new error("error; mismatch course_id");
+}
+
+// Extract Unique learner_id push to the result's Object
+const extractlearnerid = (submissions) => {
+    const idArr = [];
+    submissions.ForEach ((Submission) => {
+        const learnerid = submission.learner_id;
+        idArr.push(learnerid);
+    });
+    const uniqueidArr = [...new set(idArr)];
+    uniqueidArr.map(uniqueId) => {
+        const learnerobj =setupResult(UniqueID);
+        result.push(learnerobj);
+    };
+};
+extractlearnerid ( Submissions);
+
+try{
+    //Loop through learnersubmissions and assignments
+    for (let i = 0; i < submissons.lenght; i++) {
+        const learnerid = submissions [i].learner_id;
+        const assignementid = submssions [i].assignments_id;
+        const submitdate = submissions[i].submissions.submitted_at;
+        let score = submissions[i].submissions.score;
+
+        for (let j = 0; j< ag.assignments.lenght; j++) {
+            if (assignmentid === ag.assignments [j].id) {
+                const duedate = ag.assignments[j].due_at;
+                const maxpoints = ag.assignments[j].points_possible;
+            }
+
+        //Check potent error  for poiints_possible
+        if (isNaN(maxpoints) || max points === 0) {
+            throw  new error("Error: invalid points_possible");
+        }
+
+        const presentdate = new date();
+        const submitDayestr = new date(Submitdate);
+        const dueDateStr = new date(duedate);
+
+        // if itsnot due date yet, continue 
+        if (DueDateStr > PresentDate) {
+            continue;
+        }
+        // if submit late, deduct points
+        if (SubmiteDateStr > dueDateStr) {
+            isLate = true;
+        }
+        if (isLate) {
+            score = score - (Score * 10) / 100;
+        }
+        // Calculate learner score percentage
+        const assignmentscore = score / maxpoints;
+        // Add score and assignmentsId to result array
+        for (const obj of result) {
+            if (learnerid === obj.id) {
+                obj[assignmentid] = assignmentscore;
+                // Increment totalscore and maxscore 
+                obj.totalscore += score;
+                obj.maxscore += maxpoints;
+            } else {
+                continue;
+            }
+        }
+        } else {
+            continue;
+        }
+    }
+
+    //Calculate Avg. and delete totalscore and maxscore from obj array.
+    result.ForEach((obj)) => {
+        obj.avg = obj.totalscore / pobj.maxscore;
+        delete obj.totalscore;
+        delete obj. maxscore;
+    }; {
+    } catch (error) {
+        throw new Error("Error: Something went wrong");
+    }
+    
+    return Result;
+}
+
+const result = getlearnerdata(courseinfo, assigmentGroup, LearnerSubmissions);
+
+console.log(result);
+
